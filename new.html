@@ -1,0 +1,73 @@
+
+<div id="tg_pg" ng-app="myApp" ng-controller="myCtrl">
+<form class='tool'>
+   <input ng-disabled="!isSavedInLocalStorage" class="tool_btn" type="button" value="Set Default Content and Settings" ng-click="clearContentSettings()" />
+   <br/>
+   <div class="radio-toolbar">
+		<input type="radio" id="questions" name="selectType" ng-model="selectType" value="questions" />
+		<label for="questions">Quiz Questions</label>
+
+		<input type="radio" id="settings" name="selectType" ng-model="selectType" value="settings" />
+		<label for="settings">Quiz Settings</label>
+	</div>
+	<div class='form_container'>
+		<div ng-show="selectType == 'settings'" style="background: transparent;color: #000;box-shadow: rgb(38 57 77) 0px 1px 15px 0px;margin: 10px 0px;border: 1px solid gray;">
+			<input type="checkbox" id="timer" ng-model="isShowTimer" ng-change="changValue()" />
+			<label for="timer">Show Timer</label>
+			<input type="checkbox" id="showAllQuestions" ng-model="isShowAllQuestions" ng-change="changValue()" />
+			<label for="showAllQuestions">Show All Questions</label>
+			<div style="padding:5px;">
+				Quiz Container Max Width: <input type="number" ng-model="maxWidth" ng-change="changValue()" /><select  ng-model='maxWidthType' ng-change="changValue()">
+						<option   value="px">pixel</option>
+						<option   value="pr">percent</option>
+					</select><br />
+				Quiz Container Align: <select  ng-model='alignType' ng-change="changValue()">
+						<option   value="left">Left</option>
+						<option   value="center">Center</option>
+					</select>
+			</div>
+		</div>
+		<div ng-show="selectType == 'questions'">
+			<div class='single-question-container' ng-repeat='q in editableData' ng-init='qindex = $index;q.selected=null'>
+				Select Question Type: <select  ng-model='q.type' ng-change="changValue()">
+					<option   value="radio">Single Select</option>
+					<option   value="checkbox">Multi Select</option>
+				</select>
+				<div class='removeQuestion' ng-click='removeQuestion(qindex)' ng-show="$index==editableData.length-1">X</div>
+				<div class='question'>
+				<span class='questionNum'>{{$index+1}}.</span>
+				<div class='questionName'><input type='text' ng-model='q.question' ng-change="changValue()"/></div>
+				</div>
+				<div ng-show='q.type == qtype[0]' class='option' ng-repeat='option in q.options' ng-init='oindex = $index' >
+					<input type='radio' id='editradio{{qindex}}{{oindex}}' name='editradio{{qindex}}' value={{oindex}} ng-model='q.selected' ng-change="changValue()" ng-checked='option.right'  />
+					<label for='editradio{{qindex}}{{oindex}}' name='editradio{{qindex}}'><input type='text' ng-model='option.value' ng-change="changValue()"/>
+					<div class='removeOption' ng-click='removeOption(qindex, oindex)' ng-show="$index == q.options.length-1">X</div>
+					</label>
+					
+				</div>
+				<div ng-show='q.type == qtype[1]' class='option' ng-repeat='option in q.options' ng-init='oindex = $index' >
+					<input type='checkbox' id='editcheckbox{{qindex}}{{oindex}}' name='editcheckbox{{qindex}}' value={{oindex}} ng-checked='option.right' ng-model='option.right' ng-change="changValue()"/>
+					<label for='editcheckbox{{qindex}}{{oindex}}' name='editcheckbox{{qindex}}'><input type='text' ng-model='option.value' ng-change="changValue()" />
+					<div class='removeOption' ng-click='removeOption(qindex, oindex)' ng-show="$index == q.options.length-1">X</div>
+					</label>
+					
+				</div>
+				<div class='addOption' ng-click='addOption(qindex)'>Add Option</div>
+				<div>
+					<div>Expain Answer(Optional):  It will be displayed when the answers are revelead.</div>
+					<textarea class='explanation' ng-model='q.explanation' ng-change="changValue()" placeholder="Explain Answer (Optional)"></textarea>
+				</div>
+			</div>
+			<div class='addQuestion' ng-click='addQuestion()'>Add Question</div>
+		</div>
+	</div>
+</form>
+<br>
+<div><b>Live Quiz View:</b></div>
+<br />
+<desktop-mobile></desktop-mobile>
+<br>
+
+<code-generater dat="{isShowAllQuestions:isShowAllQuestions, isShowTimer:isShowTimer, data:data, maxWidth:maxWidth, maxWidthType:maxWidthType,alignType:alignType,showGeneratedCode:showGeneratedCode}"></code-generater>
+</div>
+<br/>
