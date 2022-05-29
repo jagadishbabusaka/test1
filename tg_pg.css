@@ -1,0 +1,208 @@
+/*quiz generator plug start*/
+.question-container{
+	position: relative;
+    width: 100%;
+    height: auto;
+	margin:0 auto;
+}
+.question-container .single-question-container{
+	border: 1px solid #C0C0C0;
+    padding: 10px;
+    border-radius: 6px;
+	margin-bottom: 5px;
+}
+.question-container .questionNum{
+	float: left;
+}
+.question-container .questionName{
+	padding-left:25px;
+}
+
+.question-container input[type='radio']{
+	display:none;
+}
+
+.question-container input[type='radio'] + label{
+	cursor: pointer;
+    height: 30px;
+    position: relative;
+    display: inline-block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 3px 0 0 3px;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #D3D3D3;
+    margin: 2px;
+	padding: 5px 0px;
+}
+.question-container input[type='radio'] + label:before{
+	position: relative;
+    display: inline-block;
+	left: 0px;
+    top: 0;
+    bottom: 0;
+    width: 30px; 
+    height: 30px; 
+    background: #D1D3D4;
+    border-radius: 3px 0 0 3px;
+    border-radius: 50%;
+	margin-right: 10px;
+	content: '\00b7';
+	text-align:center;
+	color:#D1D3D4;
+	font-size: 76px;
+	float: left;
+}
+.question-container input[type='radio']:hover + label:before{
+	color:#FFFFFF;
+}
+.question-container input[type='radio']:hover + label{
+	color:#000000b0;
+	background: #8080801a;
+}
+
+.question-container input[type='radio']:disabled + label{
+	    cursor: default;
+		background:#FFFFFF;
+		color:#000000;
+}
+.question-container input[type='radio']:disabled + label:before{
+	color:#FFFFFF;
+}
+.question-container input[type='radio']:checked + label:before{
+	color:#FFFFFF;
+	background:#2196F3;
+}
+.question-container input[type='radio'].correct + label:after{
+	color:#009688;
+	content: '\2714';
+	font-size: 30px;
+    position: absolute;
+}
+.question-container input[type='radio'].incorrect + label:after{
+	content: "\274c";
+}
+
+
+.question-container input[type='checkbox']{
+	display:none;
+}
+
+.question-container input[type='checkbox'] + label{
+	cursor: pointer;
+    height: 30px;
+    position: relative;
+    display: inline-block;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 3px 0 0 3px;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #D3D3D3;
+    margin: 2px;
+	padding: 5px 0px;
+}
+.question-container input[type='checkbox'] + label:before{
+	position: relative;
+    display: inline-block;
+	left: 0px;
+    top: 0;
+    bottom: 0;
+    width: 30px; 
+    height: 30px; 
+    background: #D1D3D4;
+    border-radius: 3px 0 0 3px;
+	margin-right: 10px;
+	content: '\2714';
+	text-align:center;
+	color:#D1D3D4;
+	font-size: 20px;
+	float: left;
+}
+.question-container input[type='checkbox']:hover + label:before{
+	color:#FFFFFF;
+}
+.question-container input[type='checkbox']:hover + label{
+	color:#000000b0;
+	background: #8080801a;
+}
+
+.question-container input[type='checkbox']:disabled + label{
+		cursor: default;
+		background:#FFFFFF;
+		color:#000000;
+}
+.question-container input[type='checkbox']:disabled + label:before{
+	color:#FFFFFF;
+}
+.question-container input[type='checkbox']:checked + label:before{
+	color:#FFFFFF;
+	background:#2196F3;
+}
+.question-container input[type='checkbox'].correct + label:after{
+	color:#009688;
+	content: '\2714';
+	font-size: 30px;
+    position: absolute;
+}
+.question-container input[type='checkbox'].incorrect + label:after{
+	content: "\274c";
+}
+
+
+.question-container .submit-button, .question-container .next-button{
+	background: #2196F3;
+    color: white;
+    padding: 5px 32px;
+    cursor: pointer;
+    border: 0px;
+}
+
+.question-container .submit-button:hover, .question-container .next-button:hover{
+	background:#216ff3;
+}
+
+.question-container .timer{
+	float:right;
+}
+/*quiz generator plug end*/
+.explanation{
+	    background-color: #FFFFFF !important;
+    width: 95% !important;
+    height: 50px !important;
+	color: #000000 !important;
+	box-shadow: black 0px 0px 0px 0px !important;
+}
+
+/*subscribe popup for post start*/
+.feedForm{
+	background: #607D8B;
+    width: 325px;
+    margin: 0 auto;
+    border-radius: 9px;
+	max-width: 100%
+}
+.feedForm p{
+	color: #FFFFFF;
+}
+input[type="submit"]{
+	background: #2196F3;
+    color: white;
+    padding: 5px 32px;
+    cursor: pointer;
+    border: 0px;
+	max-width: 100%;
+}
+input[type="submit"]:disabled{
+	background: #795548;
+	cursor:default;
+}
+input[type="email"]{
+	padding:5px;
+	color: #000000;
+}
+
+/*subscribe popup for post end*/
